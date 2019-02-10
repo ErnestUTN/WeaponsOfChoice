@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <WOC.ManageWeapons>Manage Weapons</WOC.ManageWeapons>
+  <WOC.WeaponPresetInUse>WeaponPreset in use</WOC.WeaponPresetInUse>
+  <WOC.WeaponPresetNone>None</WOC.WeaponPresetNone>
+  <WOC_WeaponPriority>Search Priority</WOC_WeaponPriority>
+  
+  <WOC_NoWeaponPresetSelected>No Weapon Preset Selected</WOC_NoWeaponPresetSelected>
+  <WOC_DeleteWeaponPreset>Delete Weapon Preset</WOC_DeleteWeaponPreset>
+  <WOC_NewWeaponPreset>New Weapon Preset</WOC_NewWeaponPreset>
+  <WOC_SelectWeaponPreset>Select Weapon Preset</WOC_SelectWeaponPreset>
+  
+
+</LanguageData>
