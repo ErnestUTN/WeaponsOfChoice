@@ -60,7 +60,7 @@ namespace WeaponsOfChoice
             float num = 0f;
 			Rect rect = new Rect(0f, 0f, 150f, 35f);
 			num += 150f;
-			if (Widgets.ButtonText(rect, "WOC_SelectWeaponPreset".Translate(), true, false, true))
+			if (Widgets.ButtonText(rect, "WOC.SelectWeaponPreset".Translate(), true, false, true))
 			{
 				List<FloatMenuOption> list = new List<FloatMenuOption>();
 				foreach (WeaponPreset localOut3 in Current.Game.GetComponent<WeaponPresetDatabase>().AllWeaponPresets)
@@ -76,14 +76,14 @@ namespace WeaponsOfChoice
 			num += 10f;
 			Rect rect2 = new Rect(num, 0f, 150f, 35f);
 			num += 150f;
-			if (Widgets.ButtonText(rect2, "WOC_NewWeaponPreset".Translate(), true, false, true))
+			if (Widgets.ButtonText(rect2, "WOC.NewWeaponPreset".Translate(), true, false, true))
 			{
 				this.SelectedWeaponPreset = Current.Game.GetComponent<WeaponPresetDatabase>().MakeNewWeaponPreset();
 			}
 			num += 10f;
 			Rect rect3 = new Rect(num, 0f, 150f, 35f);
 			num += 150f;
-			if (Widgets.ButtonText(rect3, "WOC_DeleteWeaponPreset".Translate(), true, false, true))
+			if (Widgets.ButtonText(rect3, "WOC.DeleteWeaponPreset".Translate(), true, false, true))
 			{
 				List<FloatMenuOption> list2 = new List<FloatMenuOption>();
 				foreach (WeaponPreset localOut2 in Current.Game.GetComponent<WeaponPresetDatabase>().AllWeaponPresets)
@@ -109,7 +109,7 @@ namespace WeaponsOfChoice
 			{
 				GUI.color = Color.grey;
 				Text.Anchor = TextAnchor.MiddleCenter;
-				Widgets.Label(rect4, "WOC_NoWeaponPresetSelected".Translate());
+				Widgets.Label(rect4, "WOC.NoWeaponPresetSelected".Translate());
 				Text.Anchor = TextAnchor.UpperLeft;
 				GUI.color = Color.white;
 				return;
@@ -132,11 +132,11 @@ namespace WeaponsOfChoice
                 {
                     float yoffset = 50f + i * (35f + 10f);
                     Rect Priorityrect = new Rect(325f, yoffset, 150f, 35f);
-                    if (Widgets.ButtonText(Priorityrect, "WOC_WeaponPriority".Translate() + " " + (i+1), true, false, true))
+                    if (Widgets.ButtonText(Priorityrect, "WOC.WeaponPriority".Translate() + " " + (i+1), true, false, true))
                     {
                         Find.WindowStack.Add(GeneratePriorityFloatMenuFromFilteredWeapons(i, this.SelectedWeaponPreset));
                     }
-                    Widgets.TextField(new Rect(325f+150f+10f, yoffset, 120f, 35f), this.SelectedWeaponPreset.PriorityWeapons[i]?.label.ToString() ?? "None");
+                    Widgets.TextField(new Rect(325f+150f+10f, yoffset, 120f, 35f), this.SelectedWeaponPreset.SearchPriorityDefnames[i].NullOrEmpty() ? "None": this.SelectedWeaponPreset.SearchPriorityDefnames[i]);
                 }
             }
             else
@@ -158,7 +158,7 @@ namespace WeaponsOfChoice
                     ThingDef weapon = weapons;
                     list.Add(new FloatMenuOption(weapon.label, delegate ()
                     {
-                        this.SelectedWeaponPreset.PriorityWeapons[PriorityLevel] = weapon;
+                        this.SelectedWeaponPreset.SearchPriorityDefnames[PriorityLevel] = weapon.defName;
                         
                         
                     }, MenuOptionPriority.Default, null, null, 0f, null, null));

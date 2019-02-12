@@ -32,12 +32,10 @@ namespace WeaponsOfChoice
             int num2 = Mathf.FloorToInt((rect.width - 4f) * 0.2857143f);
             float num3 = rect.x;
 
-            bool somethingIsForced = pawn_WeaponPresetTracker.forcedHandler.SomethingIsForced;
 
             Rect rect2 = new Rect(num3, rect.y + 2f, (float)num, rect.height - 4f);
 
-            if (somethingIsForced)
-                rect2.width -= 4f + (float)num2;
+
 
             Rect rect3 = rect2;
             Pawn pawn2 = pawn;

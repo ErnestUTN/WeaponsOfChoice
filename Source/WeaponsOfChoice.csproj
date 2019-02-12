@@ -55,15 +55,14 @@
     <None Include="..\Patches\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pawn_WeaponPresetTracker.cs" />
     <Compile Include="WeaponOfChoiceUtility.cs" />
     <Compile Include="Dialog_ManageWeapons.cs" />
     <Compile Include="JobGiver_OptimizeEquipment.cs" />
     <Compile Include="PawnColumnWorker_Weapons.cs" />
-    <Compile Include="Pawn_WeaponPresetTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeaponPreset.cs" />
     <Compile Include="WeaponPresetDataBase.cs" />
-    <Compile Include="WeaponPresetForcedHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

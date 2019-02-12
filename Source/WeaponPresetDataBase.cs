@@ -32,7 +32,7 @@ namespace WeaponsOfChoice
         override public void ExposeData()
         {
             Scribe_Values.Look(ref initialized, "initialized", false);
-            Scribe_Collections.Look<WeaponPreset>(ref this.WeaponPresets, "weaponPresets", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<WeaponPreset>(ref this.WeaponPresets, "weaponPresets", LookMode.Deep);
         }
 
         public WeaponPreset DefaultWeaponPreset()
@@ -51,7 +51,7 @@ namespace WeaponsOfChoice
                 
                 if (pawn.TryGetComp<Pawn_WeaponPresetTracker>()?.CurrentWeaponPreset == weaponPreset)
 
-                    return new AcceptanceReport("WeaponPresetInUse".Translate(pawn));
+                    return new AcceptanceReport("WOC.WeaponPresetInUse".Translate(pawn));
  
             }
             foreach (Pawn pawn2 in PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead)
@@ -76,8 +76,8 @@ namespace WeaponsOfChoice
                 num = 1;
             }
             int uniqueId = num;
-            WeaponPreset _weaponPreset = new WeaponPreset(uniqueId, "WeaponPreset".Translate() + " " + uniqueId.ToString());
-            _weaponPreset.filter.SetAllow(ThingCategoryDefOf.Weapons, true);
+            WeaponPreset _weaponPreset = new WeaponPreset(uniqueId, "WOC.NewWeaponPreset".Translate() + " " + uniqueId.ToString());
+            _weaponPreset.filter.SetAllow(ThingCategoryDefOf.Weapons, false);
             this.WeaponPresets.Add(_weaponPreset);
             return _weaponPreset;
         }
@@ -90,7 +90,7 @@ namespace WeaponsOfChoice
   
         }
 
-        private List<WeaponPreset> WeaponPresets = new List<WeaponPreset>();
+        private List<WeaponPreset> WeaponPresets = new List<WeaponPreset>(3);
         private bool initialized = false;
     }
 }

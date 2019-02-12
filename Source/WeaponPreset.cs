@@ -12,6 +12,7 @@ namespace WeaponsOfChoice
 
         public WeaponPreset()
         {
+            
         }
 
 
@@ -27,7 +28,7 @@ namespace WeaponsOfChoice
             Scribe_Values.Look<int>(ref this.uniqueId, "WuniqueId", 0, false);
             Scribe_Values.Look<string>(ref this.label, "Wlabel", null, false);
             Scribe_Deep.Look<ThingFilter>(ref this.filter, "Wfilter", new object[0]);
-            Scribe_Deep.Look<ThingDef[]>(ref this.PriorityWeapons, "WPriorityWeapons", new object[0]);
+            Scribe_Collections.Look(ref this.SearchPriorityDefnames, "WPriorityWeapons", LookMode.Deep);
         }
 
 
@@ -44,7 +45,7 @@ namespace WeaponsOfChoice
 
 
         public ThingFilter filter = new ThingFilter();
-        public ThingDef[] PriorityWeapons = new ThingDef[3];
+        public List<String> SearchPriorityDefnames = new List<String>() { "", "", "" };
 
 
         public static readonly Regex ValidNameRegex = new Regex("^[\\p{L}0-9 '\\-]*$");

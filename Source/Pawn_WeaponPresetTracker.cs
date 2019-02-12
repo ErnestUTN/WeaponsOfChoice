@@ -34,14 +34,14 @@ namespace WeaponsOfChoice
             base.PostExposeData();
             Scribe_Values.Look(ref this.nextWeaponPresetOptimizeTick, "nextWeaponPresetOptimizeTick", -99999);
             Scribe_References.Look<WeaponPreset>(ref this.curWeaponPreset, "curWeaponPreset", false);
-            Scribe_Deep.Look<WeaponPresetForcedHandler>(ref this.forcedHandler, "overrideHandler", new object[0]);
+            
         }
 
         
         private WeaponPreset curWeaponPreset;
         public int nextWeaponPresetOptimizeTick = -99999;
       
-        public WeaponPresetForcedHandler forcedHandler = new WeaponPresetForcedHandler();
+        
 
     }
 }
