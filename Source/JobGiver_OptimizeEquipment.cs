@@ -44,26 +44,26 @@ namespace WeaponsOfChoice
             bool WeaponNotAllowed = false; //false = The weapon is not allowed by the preset
 
             if (thingWithComps is null)
-                HasWeaponEquipped = false; 
+                HasWeaponEquipped = false;
             if (CurweaponPreset.filter.AllowedDefCount == 0)
-                 HasNonePreset = true; 
-            if (thingWithComps != null && !_equipmentFilter.Allows(thingWithComps.def)) 
-                WeaponNotAllowed=true;
+                HasNonePreset = true;
+            if (thingWithComps != null && !_equipmentFilter.Allows(thingWithComps.def))
+                WeaponNotAllowed = true;
 
             Log.Message(pawn + " HasWeaponEquipped = " + HasWeaponEquipped.ToString(), true);
             Log.Message(pawn + " HasNonePreset = " + HasNonePreset.ToString(), true);
             Log.Message(pawn + " WeaponNotAllowed = " + WeaponNotAllowed.ToString(), true);
 
-            
+
             Log.Message(pawn + " Has this equipped " + thingWithComps, true);
 
-            
 
-            if ((!HasWeaponEquipped && !HasNonePreset)) 
+
+            if ((!HasWeaponEquipped && !HasNonePreset) || (!HasNonePreset && WeaponNotAllowed))
 
             {
 
-                Log.Warning (pawn + " Will Optimize weapons", true);
+                Log.Warning(pawn + " Will Optimize weapons", true);
                 Thing newWeapon = null;
                 List<Thing> list = pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Weapon);
 
@@ -94,7 +94,7 @@ namespace WeaponsOfChoice
                     }
                     if (found) break;
                 }
-                 Log.Warning(pawn + " found weapon = " + found.ToString(), true);
+                Log.Warning(pawn + " found weapon = " + found.ToString(), true);
                 //else just keep browsing the other filter stuff
                 if (!found)
                 {
@@ -118,31 +118,20 @@ namespace WeaponsOfChoice
                     this.SetNextOptimizeTick(pawn);
                     return null;
                 }
-                
+
 
                 return new Job(JobDefOf.Equip, newWeapon);
-           }
-
-            else if (WeaponNotAllowed) //dropping weapon
-            {
-                Log.Warning("Dropping weapon", true);
-                this.SetNextOptimizeTick(pawn);
-                return new Job(JobDefOf.DropEquipment, thingWithComps); //Will try to create a brand new one for this, but for now it will drop the weapon forbiding it :(. I will try to implement the old equipt weapon replacing the previous one.. so I have to take out the drop equipment from the formul
-                
             }
+        
 
-
-            else if (!HasWeaponEquipped && HasNonePreset || (HasWeaponEquipped && !HasNonePreset && !WeaponNotAllowed)) //Doing nothing
+            else 
             {
                 Log.Warning("Not doing anything, no need to optimize", true);
                 this.SetNextOptimizeTick(pawn);
                 return null;
             }
-            else
-            {
-                this.SetNextOptimizeTick(pawn);
-                return null;
-            }
+        
+          
             
 
 
