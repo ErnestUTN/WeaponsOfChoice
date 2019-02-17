@@ -50,12 +50,12 @@ namespace WeaponsOfChoice
             if (thingWithComps != null && !_equipmentFilter.Allows(thingWithComps.def))
                 WeaponNotAllowed = true;
 
-            Log.Message(pawn + " HasWeaponEquipped = " + HasWeaponEquipped.ToString(), true);
-            Log.Message(pawn + " HasNonePreset = " + HasNonePreset.ToString(), true);
-            Log.Message(pawn + " WeaponNotAllowed = " + WeaponNotAllowed.ToString(), true);
+            //Log.Message(pawn + " HasWeaponEquipped = " + HasWeaponEquipped.ToString(), true);
+           // Log.Message(pawn + " HasNonePreset = " + HasNonePreset.ToString(), true);
+            //Log.Message(pawn + " WeaponNotAllowed = " + WeaponNotAllowed.ToString(), true);
 
 
-            Log.Message(pawn + " Has this equipped " + thingWithComps, true);
+            //Log.Message(pawn + " Has this equipped " + thingWithComps, true);
 
 
 
@@ -63,7 +63,7 @@ namespace WeaponsOfChoice
 
             {
 
-                Log.Warning(pawn + " Will Optimize weapons", true);
+               // Log.Warning(pawn + " Will Optimize weapons", true);
                 Thing newWeapon = null;
                 List<Thing> list = pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Weapon);
 
@@ -77,13 +77,13 @@ namespace WeaponsOfChoice
                 bool found = false;
                 for (int j = 0; j < 3; j++) //it's 3 right now
                 {
-                    if (!(CurweaponPreset.SearchPriorityDefnames[j].NullOrEmpty()))
+                    if (!(CurweaponPreset.SearchPriorityThingDefs[j] is null))
                     {
                         for (int i = 0; i < list.Count; i++)
                         {
                             Thing searchedWeapon = list[i];
 
-                            if (CurweaponPreset.SearchPriorityDefnames[j] == searchedWeapon.def.defName && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
+                            if (CurweaponPreset.SearchPriorityThingDefs[j] == searchedWeapon.def && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
                             {
                                 newWeapon = searchedWeapon;
                                 found = true;
@@ -94,17 +94,18 @@ namespace WeaponsOfChoice
                     }
                     if (found) break;
                 }
-                Log.Warning(pawn + " found weapon = " + found.ToString(), true);
+               // Log.Warning(pawn + " found weapon = " + found.ToString(), true);
                 //else just keep browsing the other filter stuff
                 if (!found)
                 {
-                    Log.Message(pawn + " Looking in the rest of the non priorityized weapons ", true);
+                   // Log.Message(pawn + " Looking in the rest of the non priorityized weapons ", true);
 
                     for (int j = 0; j < list.Count; j++)
                     {
                         Thing searchedWeapon = list[j];
 
-                        if (_equipmentFilter.Allows(searchedWeapon.def) && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
+                        //Log.Message(searchedWeapon + "is  allowed by filter? = " + _equipmentFilter.Allows(searchedWeapon));
+                        if (_equipmentFilter.Allows(searchedWeapon) && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
                         {
                             newWeapon = searchedWeapon;
                             found = true;
@@ -126,7 +127,7 @@ namespace WeaponsOfChoice
 
             else 
             {
-                Log.Warning("Not doing anything, no need to optimize", true);
+                //Log.Warning("Not doing anything, no need to optimize", true);
                 this.SetNextOptimizeTick(pawn);
                 return null;
             }

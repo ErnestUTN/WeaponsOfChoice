@@ -18,13 +18,17 @@ namespace WeaponsOfChoice
 			if (Dialog_ManageWeapons.WeaponPresetGlobalFilter == null)
 			{
 				Dialog_ManageWeapons.WeaponPresetGlobalFilter = new ThingFilter();
-				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null, null);
-			}
+				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null,new List<SpecialThingFilterDef>
+
+                { SpecialThingFilterDef.Named("AllowSmeltable"), SpecialThingFilterDef.Named("AllowNonSmeltableWeapons") });
+
+            }
 			this.SelectedWeaponPreset = selectedWeaponPreset;
 		}
 
 
-		private WeaponPreset SelectedWeaponPreset
+
+        private WeaponPreset SelectedWeaponPreset
 		{
 			get
 			{
@@ -136,7 +140,7 @@ namespace WeaponsOfChoice
                     {
                         Find.WindowStack.Add(GeneratePriorityFloatMenuFromFilteredWeapons(i, this.SelectedWeaponPreset));
                     }
-                    Widgets.TextField(new Rect(325f+150f+10f, yoffset, 120f, 35f), this.SelectedWeaponPreset.SearchPriorityDefnames[i].NullOrEmpty() ? "None": this.SelectedWeaponPreset.SearchPriorityDefnames[i]);
+                    Widgets.TextField(new Rect(325f + 150f + 10f, yoffset, 120f, 35f), this.SelectedWeaponPreset?.SearchPriorityThingDefs?[i]?.label ?? "None");
                 }
             }
             else
@@ -158,7 +162,7 @@ namespace WeaponsOfChoice
                     ThingDef weapon = weapons;
                     list.Add(new FloatMenuOption(weapon.label, delegate ()
                     {
-                        this.SelectedWeaponPreset.SearchPriorityDefnames[PriorityLevel] = weapon.defName;
+                        this.SelectedWeaponPreset.SearchPriorityThingDefs[PriorityLevel] = weapon;
                         
                         
                     }, MenuOptionPriority.Default, null, null, 0f, null, null));
@@ -174,15 +178,33 @@ namespace WeaponsOfChoice
             
         }
 
+        public void CheckPriorityWeaponsAgainstFilter()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                //Log.Warning(SelectedWeaponPreset.SearchPriorityThingDefs[i] + i.ToString() + " Prioritized allowed by filter? " + this.SelectedWeaponPreset.filter.Allows(this.SelectedWeaponPreset.SearchPriorityThingDefs[i]).ToString());
+                if (!this.SelectedWeaponPreset.filter.Allows(this.SelectedWeaponPreset.SearchPriorityThingDefs[i]))
+                {
+                    this.SelectedWeaponPreset.SearchPriorityThingDefs[i] = null;
+                }
+             
+            }
+        }
+
 
 
         public override void PreClose()
 		{
 			base.PreClose();
 			this.CheckSelectedWeaponPresetHasName();
-		}
+            if (this.SelectedWeaponPreset != null)
+            {
+                this.CheckPriorityWeaponsAgainstFilter();
+            }
 
-		public static void DoNameInputRect(Rect rect, ref string name)
+        }
+
+        public static void DoNameInputRect(Rect rect, ref string name)
 		{
 			name = Widgets.TextField(rect, name, 30, WeaponPreset.ValidNameRegex);
 		}
