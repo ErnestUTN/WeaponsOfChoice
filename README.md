@@ -1,5 +1,5 @@
 # WeaponsOfChoice[Beta]
-A revamped version of WeaponsAndOutfits(https://github.com/ErnestUTN/Rimworld_WeaponsAndOutfits) . This time the weapons configuration are not part of the apparel outfit system.
+A revamped version of WeaponsAndOutfits(https://github.com/ErnestUTN/Rimworld_WeaponsAndOutfits) . This time the weapons configuration is not part of the apparel outfit system.
 
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_1.png)
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_2.png)
