@@ -18,7 +18,7 @@ The following two propositions governs the logic behind the picking and equippin
 ## Compatibility
 So far, compatible with the same mods as WeaponsAndOutfits. During the week I will integrate BPC (Better Pawn Control) within it
 
-[b]Make sure to disable WeaponsAndOutfits[/b]
+*Make sure to disable WeaponsAndOutfits*
 
 # Credits
 
