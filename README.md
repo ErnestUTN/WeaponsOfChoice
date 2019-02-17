@@ -18,6 +18,8 @@ The following two propositions governs the logic behind the picking and equippin
 ## Compatibility
 So far, compatible with the same mods as WeaponsAndOutfits. During the week I will integrate BPC (Better Pawn Control) within it
 
+*Make sure to disable WeaponsAndOutfits*
+
 # Credits
 
 As before, huge thanks to the discord rimworld modding group for their help in the modding process. If you are modding and you're stuck at it, pay a visit to them ;).
