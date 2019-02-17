@@ -4,6 +4,10 @@ A revamped version of WeaponsAndOutfits(By me) . This time the weapons configura
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_1.png)
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_2.png)
 
+## Additional Features
+
+You can now choose among your allowed filtered equippables "priority" equippables. Click on the dropdown to the right of the filter in the dialog menu and choose your top 3 equippables you want your pawn to pay special attention to. You can leave one or two unchosen dropdowns , not problem, the rest of the filtered equippables will be treated as non-prioritized and will similar to apparel in the outfits menu. [Read the Equip Logic for more info]
+
 ## Equip logic
 The following two propositions governs the logic behind the picking and equipping of the searched weapon:
 
