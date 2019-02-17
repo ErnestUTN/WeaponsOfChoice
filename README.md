@@ -1,4 +1,4 @@
-![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview1.png)
+![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_1.png)
 
 # WeaponsOfChoice
 A revamped version of WeaponsAndOutfits(By me) . This time the weapons configuration are not part of the apparel outfit system.
