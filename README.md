@@ -1,5 +1,5 @@
 # WeaponsOfChoice[Beta]
-A revamped version of WeaponsAndOutfits(https://github.com/ErnestUTN/Rimworld_WeaponsAndOutfits) . This time the weapons configuration is not part of the apparel outfit system.
+A revamped version of WeaponsAndOutfits(https://github.com/ErnestUTN/Rimworld_WeaponsAndOutfits) . This time the weapons configuration is not part of the apparel outfit system. 
 
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_1.png)
 ![alt text](https://github.com/ErnestUTN/WeaponsOfChoice/blob/Beta/About/Preview_2.png)
@@ -24,4 +24,4 @@ So far, compatible with the same mods as WeaponsAndOutfits. During the week I wi
 
 As before, huge thanks to the discord rimworld modding group for their help in the modding process. If you are modding and you're stuck at it, pay a visit to them ;).
 
-Regards
+Ludeon Forum: https://ludeon.com/forums/index.php?topic=48068.msg453787#msg453787
