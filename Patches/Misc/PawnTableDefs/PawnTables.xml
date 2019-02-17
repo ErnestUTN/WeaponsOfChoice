@@ -5,7 +5,6 @@
         <xpath>Defs/PawnTableDef[defName = "Assign"]/columns/li[text() = "FoodRestriction"]</xpath>
         <value>
             <li>WeaponsOfChoice_Weapons</li>
-			      <li>GapTiny</li>
         </value>
         <order>Prepend</order>
     </Operation>
