@@ -23,5 +23,3 @@ So far, compatible with the same mods as WeaponsAndOutfits. During the week I wi
 # Credits
 
 As before, huge thanks to the discord rimworld modding group for their help in the modding process. If you are modding and you're stuck at it, pay a visit to them ;).
-
-Regards
