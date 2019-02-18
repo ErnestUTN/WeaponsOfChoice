@@ -16,7 +16,7 @@ The following two propositions governs the logic behind the picking and equippin
 3-  A pawn that has equipped a priority weapon in level 2 won't try to search for a weapon in level 1 Priority (lvl 1 > lvl 2 > lvl 3)
 
 ## Compatibility
-So far, compatible with the same mods as WeaponsAndOutfits. During the week I will integrate BPC (Better Pawn Control) within it
+So far, compatible with the same mods as WeaponsAndOutfits. During the week I will integrate BPC (Better Pawn Control) within it ( Though it is a task for Voult I think )
 
 *Make sure to disable WeaponsAndOutfits*
 
