@@ -16,9 +16,16 @@ The following two propositions governs the logic behind the picking and equippin
 3-  A pawn that has equipped a priority weapon in level 2 won't try to search for a weapon in level 1 Priority (lvl 1 > lvl 2 > lvl 3)
 
 ## Compatibility
-So far, compatible with the same mods as WeaponsAndOutfits. During the week I will integrate BPC (Better Pawn Control) within it
+So far, compatible with the same mods as WeaponsAndOutfits ( *Make sure to disable WeaponsAndOutfits if using this one* ) . 
 
-*Make sure to disable WeaponsAndOutfits*
+During the week I will integrate BPC (Better Pawn Control) within it. (Actually Voult might need to adapt his code to make it work, so ask him if he can make a compatibility patch). 
+
+Anyway in the Modified BPC assembly section here I have a workaround for you.
+
+## Modified BPC assembly
+
+There is a folder with a recompiled version of Voult's BPC project  with additional modifications so as to integrate it within the mod. Replace this assembly into the one  you currently have in BPC mod folder and your policies will also affect Weapon Presets . Remember to make a backup of the original assembly..
+It works but needs testing anyway.
 
 ## Known Issues
 
