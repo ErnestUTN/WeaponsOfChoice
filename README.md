@@ -20,6 +20,10 @@ So far, compatible with the same mods as WeaponsAndOutfits. During the week I wi
 
 *Make sure to disable WeaponsAndOutfits*
 
+## Known Issues
+
+1- When opening the weapon dialog menu and attempting to create a new weapon preset it might take a couple of seconds before something happens. If you see this happen frequently add it as an issue in github, here.
+
 # Credits
 
 As before, huge thanks to the discord rimworld modding group for their help in the modding process. If you are modding and you're stuck at it, pay a visit to them ;).
