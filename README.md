@@ -27,7 +27,7 @@ Anyway in the Modified BPC assembly section here I have a workaround for you.
 There is a folder with a recompiled version of Voult's BPC project  with additional modifications so as to integrate it within the mod. Replace this assembly into the one  you currently have in BPC mod folder and your policies will also affect Weapon Presets . Remember to make a backup of the original assembly..
 It works but needs testing anyway.
 
-**__IMPORTANT__**: make sure that weapon of choice is enabled before better pawn control with this assembly; failing to do so will throw exceptions (This is probably because I didn't write any "fail-safe" to be executed in case WeaponOfChoice wasn't present in the mod list). i.e : If you use this assembly, you must use this mod.
+**IMPORTANT**: --Make sure that weapon of choice is enabled before better pawn control with this assembly; failing to do so will throw exceptions (This is probably because I didn't write any "fail-safe" to be executed in case WeaponOfChoice wasn't present in the mod list). i.e : If you use this assembly, you must use this mod.--
 
 ## Known Issues
 
