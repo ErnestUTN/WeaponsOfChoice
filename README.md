@@ -1,3 +1,5 @@
+#IMPORTANT: This Master branch version is unplayable, it's sole purpose is to exist to be overwritten by the Successful Beta Branch later on. Try the Beta Branch. If no issues arises for some time, it will merge (or basically overwrite) the whole of this branch
+
 # WeaponsOfChoice
 A revamped version of WeaponsAndOutfits(https://github.com/ErnestUTN/Rimworld_WeaponsAndOutfits) . This time the weapons configuration is not part of the apparel outfit system.
 
