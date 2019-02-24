@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Verse;
 using RimWorld;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace WeaponsOfChoice
 {
 
@@ -28,7 +28,18 @@ namespace WeaponsOfChoice
             Scribe_Values.Look<int>(ref this.uniqueId, "WuniqueId", 0, false);
             Scribe_Values.Look<string>(ref this.label, "Wlabel", null, false);
             Scribe_Deep.Look<ThingFilter>(ref this.filter, "Wfilter", new object[0]);
-            Scribe_Collections.Look(ref this.SearchPriorityThingDefs, "WPriorityWeapons");
+            
+            List<ThingDef> defs = SearchPriorityThingDefs.ToList();
+            Scribe_Collections.Look(ref defs, "WPriorityWeapons");
+
+            if (defs != null)
+            {
+                SearchPriorityThingDefs = new ThingDef[3];
+                for (int i = 0; i < defs.Count(); i++)
+                {
+                    SearchPriorityThingDefs[i] = defs[i];
+                }
+            }          
         }
 
 
@@ -45,7 +56,7 @@ namespace WeaponsOfChoice
 
 
         public ThingFilter filter = new ThingFilter();
-        public List<ThingDef> SearchPriorityThingDefs = new List<ThingDef>() { null, null, null };
+        public ThingDef[] SearchPriorityThingDefs = new ThingDef[3];
         
 
         public static readonly Regex ValidNameRegex = new Regex("^[\\p{L}0-9 '\\-]*$");
