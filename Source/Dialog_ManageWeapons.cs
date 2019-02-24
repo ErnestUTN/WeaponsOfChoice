@@ -18,11 +18,9 @@ namespace WeaponsOfChoice
 			if (Dialog_ManageWeapons.WeaponPresetGlobalFilter == null)
 			{
 				Dialog_ManageWeapons.WeaponPresetGlobalFilter = new ThingFilter();
-				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null,new List<SpecialThingFilterDef>
+				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null, null);
 
-                { SpecialThingFilterDef.Named("AllowSmeltable"), SpecialThingFilterDef.Named("AllowNonSmeltableWeapons") });
-
-            }
+           		 }
 			this.SelectedWeaponPreset = selectedWeaponPreset;
 		}
 
