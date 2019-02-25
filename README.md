@@ -34,6 +34,7 @@ It works but needs testing anyway.
 ## Known Issues
 
 1- When opening the weapon dialog menu and attempting to create a new weapon preset it might take a couple of seconds before something happens. If you see this happen frequently add it as an issue in github, here.
+2- You might need to save the loaded game with the mod and then reload it again to make any eventual error to stop happening.
 
 # Credits
 
