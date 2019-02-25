@@ -18,9 +18,8 @@ namespace WeaponsOfChoice
 			if (Dialog_ManageWeapons.WeaponPresetGlobalFilter == null)
 			{
 				Dialog_ManageWeapons.WeaponPresetGlobalFilter = new ThingFilter();
-				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null,new List<SpecialThingFilterDef>
-
-                { SpecialThingFilterDef.Named("AllowSmeltable"), SpecialThingFilterDef.Named("AllowNonSmeltableWeapons") });
+				Dialog_ManageWeapons.WeaponPresetGlobalFilter.SetAllow(ThingCategoryDefOf.Weapons, true, null,null);
+                
 
             }
 			this.SelectedWeaponPreset = selectedWeaponPreset;
@@ -134,6 +133,7 @@ namespace WeaponsOfChoice
             {
                 for (int i = 0; i < 3; i++)
                 {
+                    //Log.Warning("For loop index " + i);
                     float yoffset = 50f + i * (35f + 10f);
                     Rect Priorityrect = new Rect(325f, yoffset, 150f, 35f);
                     if (Widgets.ButtonText(Priorityrect, "WOC.WeaponPriority".Translate() + " " + (i+1), true, false, true))
@@ -147,7 +147,20 @@ namespace WeaponsOfChoice
             {
                 Widgets.TextArea(new Rect(325f, 50f, 180f, 60f), "No filters selected",true);
             }
-            
+            //Create a reset button
+
+            Rect ResetPriorities = new Rect(250f, 0f, 250f, 30f);
+            if (Widgets.ButtonText(ResetPriorities, "Set all Priorities to 0", true, false, true))
+            {
+                for(int i=0; i< 3; i++)
+                {
+                    this.SelectedWeaponPreset.SearchPriorityThingDefs[i] = null;
+                }
+            }
+
+
+
+
             GUI.EndGroup();
 		}
 
@@ -156,15 +169,14 @@ namespace WeaponsOfChoice
 
             List<FloatMenuOption> list = new List<FloatMenuOption>();
             
-            
-                foreach (ThingDef weapons in weaponPreset.filter.AllowedThingDefs)
+                foreach (ThingDef weapon in weaponPreset.filter.AllowedThingDefs)
                 {
-                    ThingDef weapon = weapons;
+                    
                     list.Add(new FloatMenuOption(weapon.label, delegate ()
                     {
-                        this.SelectedWeaponPreset.SearchPriorityThingDefs[PriorityLevel] = weapon;
-                        
-                        
+
+                            this.SelectedWeaponPreset.SearchPriorityThingDefs[PriorityLevel] = weapon;
+
                     }, MenuOptionPriority.Default, null, null, 0f, null, null));
 
                 }
@@ -180,13 +192,16 @@ namespace WeaponsOfChoice
 
         public void CheckPriorityWeaponsAgainstFilter()
         {
-            for (int i = 0; i < 3; i++)
+            int i = 0;
+            foreach (ThingDef thingdef in this.SelectedWeaponPreset.SearchPriorityThingDefs)
             {
                 //Log.Warning(SelectedWeaponPreset.SearchPriorityThingDefs[i] + i.ToString() + " Prioritized allowed by filter? " + this.SelectedWeaponPreset.filter.Allows(this.SelectedWeaponPreset.SearchPriorityThingDefs[i]).ToString());
-                if (!this.SelectedWeaponPreset.filter.Allows(this.SelectedWeaponPreset.SearchPriorityThingDefs[i]))
+                if (thingdef != null && !this.SelectedWeaponPreset.filter.Allows(thingdef))
                 {
                     this.SelectedWeaponPreset.SearchPriorityThingDefs[i] = null;
+                    
                 }
+                i++;
              
             }
         }
@@ -197,7 +212,7 @@ namespace WeaponsOfChoice
 		{
 			base.PreClose();
 			this.CheckSelectedWeaponPresetHasName();
-            if (this.SelectedWeaponPreset != null)
+            if (!(this.SelectedWeaponPreset?.SearchPriorityThingDefs is  null))
             {
                 this.CheckPriorityWeaponsAgainstFilter();
             }

@@ -77,7 +77,8 @@ namespace WeaponsOfChoice
             }
             int uniqueId = num;
             WeaponPreset _weaponPreset = new WeaponPreset(uniqueId, "WOC.NewWeaponPreset".Translate() + " " + uniqueId.ToString());
-            _weaponPreset.filter.SetAllow(ThingCategoryDefOf.Weapons, false);
+            _weaponPreset.filter.SetAllow(ThingCategoryDefOf.Weapons, true,null,null);
+            _weaponPreset.filter.SetDisallowAll(null, null);
             this.WeaponPresets.Add(_weaponPreset);
             return _weaponPreset;
         }
@@ -86,8 +87,7 @@ namespace WeaponsOfChoice
         {
             WeaponPreset _weaponPreset1 = this.MakeNewWeaponPreset();
             _weaponPreset1.label = "WOC.WeaponPresetNone".Translate();
-            _weaponPreset1.filter.SetDisallowAll(null, null);
-  
+            //_weaponPreset1.filter.SetDisallowAll(null, null); done for MakeNewWeaponPreset
         }
 
         private List<WeaponPreset> WeaponPresets = new List<WeaponPreset>(3);

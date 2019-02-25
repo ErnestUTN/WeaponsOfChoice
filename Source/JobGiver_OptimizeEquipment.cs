@@ -75,15 +75,13 @@ namespace WeaponsOfChoice
 
                 // Top 3 Guns chosen by the pawn first
                 bool found = false;
-                for (int j = 0; j < 3; j++) //it's 3 right now
+                foreach (ThingDef PListThingDef in CurweaponPreset.SearchPriorityThingDefs) //it's 3 right now
                 {
-                    if (!(CurweaponPreset.SearchPriorityThingDefs[j] is null))
+                    if (!(PListThingDef is null))
                     {
-                        for (int i = 0; i < list.Count; i++)
+                        foreach (Thing searchedWeapon in list)
                         {
-                            Thing searchedWeapon = list[i];
-
-                            if (CurweaponPreset.SearchPriorityThingDefs[j] == searchedWeapon.def && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
+                            if (PListThingDef == searchedWeapon.def && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
                             {
                                 newWeapon = searchedWeapon;
                                 found = true;
@@ -98,11 +96,11 @@ namespace WeaponsOfChoice
                 //else just keep browsing the other filter stuff
                 if (!found)
                 {
-                   // Log.Message(pawn + " Looking in the rest of the non priorityized weapons ", true);
+                    // Log.Message(pawn + " Looking in the rest of the non priorityized weapons ", true);
 
-                    for (int j = 0; j < list.Count; j++)
+                    foreach (Thing searchedWeapon in list)
                     {
-                        Thing searchedWeapon = list[j];
+                        
 
                         //Log.Message(searchedWeapon + "is  allowed by filter? = " + _equipmentFilter.Allows(searchedWeapon));
                         if (_equipmentFilter.Allows(searchedWeapon) && searchedWeapon.IsInAnyStorage() && !searchedWeapon.IsForbidden(pawn) && !searchedWeapon.IsBurning() && pawn.CanReserveAndReach(searchedWeapon, PathEndMode.OnCell, pawn.NormalMaxDanger(), 1, -1, null, false))
