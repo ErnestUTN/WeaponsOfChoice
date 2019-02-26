@@ -36,6 +36,16 @@ It works but needs testing anyway.
 1- When opening the weapon dialog menu and attempting to create a new weapon preset it might take a couple of seconds before something happens. If you see this happen frequently add it as an issue in github, here.
 2- You might need to save the loaded game with the mod and then reload it again to make any eventual error to stop happening.
 
+## Install Instructions
+
+1- Download from https://github.com/ErnestUTN/WeaponsOfChoice/releases the WeaponofChoice- Beta zip and decompress it into the Rimworld's mod folder.. make sure there aren't nested folders like Mods/WeaponofChoiceBeta/WeaponOfChoiceBeta.
+2- If you have the BetterPawnControl mod and want the assign policy to affect the WeaponOfChoice column, replace the dll file located in the assemblies folder of the BetterPawnControl mod : /BetterPawnControl/Assemblies with dll provided in the prerelease
+3- You should also download the languages zip and decompress it making it to overwrite the languages folder of the BetterPawnControl mod.
+4- Make a Backup of these two just in case.
+5- Play. If necessary, save a different savegame and reload it again if any error arises.
+6- Feel free to create an issue if the above persists.
+
+
 # Credits
 
 As before, huge thanks to the discord rimworld modding group for their help in the modding process. If you are modding and you're stuck at it, pay a visit to them ;).
